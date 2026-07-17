@@ -1,5 +1,6 @@
 import { Map } from 'maplibre-gl';
 import naturalEarthData from "./data/ne.geojson?url";
+import areaData from "./data/area.geojson?url"
 
 const mapElement = document.createElement('div');
 mapElement.id = 'map';
@@ -36,7 +37,7 @@ const map = new Map ({
 map.on("load", () => {
   map.addSource ('kota', {
     type: 'geojson',
-    data: naturalEarthData
+    data: naturalEarthData 
   });
 
   map.addLayer({
@@ -51,4 +52,21 @@ map.on("load", () => {
       "circle-opacity": 0.7
     }
   })
+
+  map.addSource('pulau', {
+    type: "geojson",
+    data: areaData
+  })
+
+  map.addLayer ({
+    id: "area-pulau",
+    type: "fill",
+    source: "pulau",
+    paint: {
+      "fill-color": "orange",
+      "fill-outline-color": "olive"
+    }
+
+  })
+  
 })
