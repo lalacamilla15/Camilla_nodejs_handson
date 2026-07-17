@@ -1,6 +1,7 @@
 import { Map } from 'maplibre-gl';
 import naturalEarthData from "./data/ne.geojson?url";
 import areaData from "./data/area.geojson?url"
+import spongebobImg from "./data/spongebob.jpg";
 
 const mapElement = document.createElement('div');
 mapElement.id = 'map';
@@ -35,6 +36,8 @@ const map = new Map ({
 
 
 map.on("load", () => {
+
+  // Layer Vector - Titik
   map.addSource ('kota', {
     type: 'geojson',
     data: naturalEarthData 
@@ -53,6 +56,7 @@ map.on("load", () => {
     }
   })
 
+  // Layer Vector - Polygon
   map.addSource('pulau', {
     type: "geojson",
     data: areaData
@@ -66,7 +70,23 @@ map.on("load", () => {
       "fill-color": "orange",
       "fill-outline-color": "olive"
     }
-
   })
-  
+
+  // Layer Vector - Raster
+  map.addSource ("spongebob", {
+    type: "image",
+    url: spongebobImg,
+    coordinates: [
+      [129.42, 16.53],// top-left
+      [134.33, 16.24],// top-right
+      [133.54, 13.26],// bottom-right
+      [129.67, 13.43]// bottom-left
+    ]
+  })
+
+  map.addLayer({
+    id: "spongebob-image",
+    type: "raster",
+    source: "spongebob",
+  })
 })
