@@ -4,6 +4,7 @@ import { addKotaLayer, addPulauLayer } from './layers/vector';
 import spongebobImg from "./data/spongebob.jpg";
 import { addSpongebobImage } from './layers/raster';
 import { addAttribution } from './controls/basicControls';
+import { LogoGmapsControl } from './controls/customLogoControl'
 
 const mapElement = document.createElement('div');
 mapElement.id = 'map';
@@ -31,3 +32,4 @@ addAttribution(map, "Natural Earth, Nickelodeon");
 map.addControl(new FullscreenControl())
 map.addControl(new GlobeControl)
 map.addControl(new LogoControl ({compact:false}))
+map.addControl(new LogoGmapsControl(), "top-left")
