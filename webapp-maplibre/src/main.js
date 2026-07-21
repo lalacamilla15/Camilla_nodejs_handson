@@ -1,4 +1,4 @@
-import { Map } from 'maplibre-gl';
+import { Map, FullscreenControl, GlobeControl, LogoControl } from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { addKotaLayer, addPulauLayer } from './layers/vector';
 import spongebobImg from "./data/spongebob.jpg";
@@ -7,7 +7,7 @@ import { addAttribution } from './controls/basicControls';
 
 const mapElement = document.createElement('div');
 mapElement.id = 'map';
-mapElement.style.height = "300px"
+mapElement.style.height = "300px";
 document.body.appendChild(mapElement);
 
 const map = new Map ({
@@ -27,3 +27,7 @@ map.on("load", () => {
 
 // Controls setting
 addAttribution(map, "Natural Earth, Nickelodeon");
+
+map.addControl(new FullscreenControl())
+map.addControl(new GlobeControl)
+map.addControl(new LogoControl ({compact:false}))
