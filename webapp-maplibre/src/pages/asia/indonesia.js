@@ -11,7 +11,7 @@ document.body.appendChild(mapElement);
 
 const map = new Map ({
   container: 'map',
-  style: 'https://basemap.mapid.io/styles/basic/style.json?key=6a619203e6cb472cfcad9330',
+  style: 'https://basemap.mapid.io/styles/dark/style.json?key=6a619203e6cb472cfcad9330',
   center: [106.82, -6.17],
   zoom: 8,
   attributionControl: false
