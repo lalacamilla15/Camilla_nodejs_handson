@@ -22,7 +22,8 @@ const map = new Map ({
   style: 'https://demotiles.maplibre.org/globe.json',
   center: [106.82, -6.17],
   zoom: 2,
-  attributionControl: false
+  attributionControl: false,
+  cooperativeGestures: true,
 });
 
 
@@ -37,7 +38,7 @@ map.on("click", "titik-kota", function(event){
   addKotaPopup(map, event)
 })
 
-
+// map.doubleClickZoom.disable();
 
 // Controls setting
 addAttribution(map, "Natural Earth, Nickelodeon");
